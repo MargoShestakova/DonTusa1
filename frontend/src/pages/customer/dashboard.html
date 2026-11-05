@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет заказчика — DonTusa</title>
+  <link rel="stylesheet" href="/styles/variables.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <script defer src="/services/api.js"></script>
+  <script defer src="/main.js"></script>
+  <script defer src="/pages/customer/dashboard-script.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-icon">D</div>
+      <span>DonTusa</span>
+      <span class="sidebar-subtitle">Кабинет заказчика</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" data-section="dashboard"><span class="sidebar-icon">📊</span>Мои мероприятия</a>
+      <a href="#" class="sidebar-link" data-section="proposals"><span class="sidebar-icon">📨</span>Предложения менеджера</a>
+      <a href="#" class="sidebar-link" data-section="messages"><span class="sidebar-icon">💬</span>Сообщения</a>
+      <a href="#" class="sidebar-link" data-section="notifications"><span class="sidebar-icon">𔔁</span>Уведомления</a>
+      <a href="#" class="sidebar-link" data-section="profile"><span class="sidebar-icon">👤</span>Профиль</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="/auth/login.html" class="sidebar-link btn-lavender btn-sm w-full" style="margin-top:auto;">Выйти</a>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <header class="main-header">
+      <div class="main-header-left">
+        <h1 id="pageTitle">Мои мероприятия</h1>
+        <p id="pageSubtitle">Создавайте и отслеживайте подготовку к вашим праздникам</p>
+      </div>
+      <div class="main-header-right">
+        <div class="user-profile">
+          <span id="currentUserName">Заказчик</span>
+          <span id="currentUserRole">customer</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card card-lavender fade-in-up"><div class="stat-icon">📋</div><div class="stat-value" id="statEvents">—</div><div class="stat-label">Всего мероприятий</div></div>
+        <div class="stat-card card-lavender fade-in-up" style="animation-delay:0.1s;"><div class="stat-icon">⏳</div><div class="stat-value" id="statPending">—</div><div class="stat-label">В подготовке</div></div>
+        <div class="stat-card card-lavender fade-in-up" style="animation-delay:0.2s;"><div class="stat-icon">✅</div><div class="stat-value" id="statConfirmed">—</div><div class="stat-label">Согласовано</div></div>
+        <div class="stat-card card-lavender fade-in-up" style="animation-delay:0.3s;"><div class="stat-icon">🔔</div><div class="stat-value" id="statNotifications">—</div><div class="stat-label">Новых уведомлений</div></div>
+      </div>
+    </section>
+
+    <div id="sectionsContainer">
+      <section class="content-section active" id="section-dashboard">
+        <div class="section-header">
+          <h2>Мои мероприятия</h2>
+          <a href="#" class="btn btn-floral w-auto">Создать мероприятие</a>
+        </div>
+        <div id="eventsList" class="table-list">
+          <!-- Заполняется JS -->
+        </div>
+      </section>
+
+      <section class="content-section hidden" id="section-proposals">
+        <div class="section-header">
+          <h2>Предложения менеджера</h2>
+        </div>
+        <div id="proposalsList" class="table-list">
+          <!-- Заполняется JS -->
+        </div>
+      </section>
+
+      <section class="content-section hidden" id="section-messages">
+        <div class="section-header">
+          <h2>Сообщения с менеджером</h2>
+        </div>
+        <div id="messagesList" class="table-list">
+          <!-- Заполняется JS -->
+        </div>
+      </section>
+
+      <section class="content-section hidden" id="section-notifications">
+        <div class="section-header">
+          <h2>Уведомления</h2>
+        </div>
+        <div id="notificationsList" class="table-list">
+          <!-- Заполняется JS -->
+        </div>
+      </section>
+
+      <section class="content-section hidden" id="section-profile">
+        <div class="section-header">
+          <h2>Мой профиль</h2>
+        </div>
+        <div class="card max-w-lg">
+          <form id="profileForm">
+            <div class="form-group">
+              <label for="profileFullName">ФИО</label>
+              <input type="text" id="profileFullName" name="full_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="profileEmail">Email</label>
+              <input type="email" id="profileEmail" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="profilePhone">Телефон</label>
+              <input type="tel" id="profilePhone" name="phone" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-floral w-full">Сохранить изменения</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

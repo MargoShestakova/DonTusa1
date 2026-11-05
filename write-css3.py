@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Fix main.css
+
+content_main = """/* ==========================================
+   DonTusa — Основные стили
+   ========================================== */
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section { padding: 60px 0; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+h3 { font-size: clamp(1.25rem, 3vw, 1.75rem); margin-bottom: 0.75rem; }
+.text-center { text-align: center; }
+.text-white { color: #FFFFFF; }
+.text-dark { color: var(--color-dark); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  min-height: 48px;
+}
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-primary {
+  background: linear-gradient(135deg, rgba(243, 144, 75, 0.85), rgba(192, 53, 15, 0.65));
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(100, 47, 55, 0.3);
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, rgba(229, 122, 53, 0.9), rgba(163, 45, 13, 0.7));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(192, 53, 15, 0.4);
+}
+
+.btn-dark {
+  background: var(--color-dark);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(100, 47, 55, 0.3);
+}
+.btn-dark:hover {
+  background: #4E252B;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(192, 53, 15, 0.4);
+}
+
+.btn-lavender {
+  background: var(--color-lavender);
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(184, 157, 187, 0.25);
+}
+.btn-lavender:hover {
+  background: var(--color-lavender-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(184, 157, 187, 0.3);
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFFFFF;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: var(--color-soft-yellow);
+  transform: translateY(-2px);
+}
+
+.btn-floral {
+  background: var(--color-lavender);
+  color: #FFFFFF;
+  border-radius: 50px;
+  padding: 14px 32px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 12px rgba(100, 47, 55, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.btn-floral::before { content: none; }
+.btn-floral:hover {
+  background: var(--color-lavender-hover);
+  transform: scale(1.03);
+  box-shadow: 0 6px 16px rgba(184, 157, 187, 0.25);
+}
+.btn-floral:active { transform: scale(0.97); }
+
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+.form-control {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--border-light);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-dark);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(243, 144, 75, 0.15);
+  background: #FFFFFF;
+}
+.form-control::placeholder { color: var(--text-muted); }
+.form-control.error { border-color: var(--color-accent); }
+.error-message {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(100, 47, 55, 0.25);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(192, 53, 15, 0.3);
+}
+
+.card-lavender {
+  background: var(--bg-lavender-card);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(184, 157, 187, 0.2);
+  border: 1px solid var(--border-lavender);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+.card-lavender:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(184, 157, 187, 0.3);
+}
+"""
+
+with open('frontend/src/styles/main.css', 'w', encoding='utf-8') as f:
+    f.write(content_main)
+print('main.css written')

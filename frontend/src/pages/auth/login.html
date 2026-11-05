@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — DonTusa</title>
+  <link rel="stylesheet" href="/styles/variables.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script defer src="/services/api.js"></script>
+  <script defer src="/main.js"></script>
+  <script>
+  // Принудительно связываем переменные
+  window.api = window.dontusaAPI;
+  window.authAPI = window.dontusaAPI ? window.dontusaAPI.authAPI : null;
+  </script>
+  <script defer src="/pages/auth/login-script.js"></script>
+</head>
+<body>
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="/" class="navbar-brand">
+        <div class="logo-icon">🌸</div>
+        <span>DonTusa</span>
+      </a>
+      <div class="navbar-actions">
+        <a href="/auth/register.html" class="btn btn-lavender btn-sm">Регистрация</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="flex flex-col items-center justify-center" style="min-height: 75vh; padding: 40px 20px;">
+    <div class="card max-w-lg p-8 w-full fade-in-up">
+      <div class="text-center mb-8">
+        <div class="logo-icon" style="width: 60px; height: 60px; font-size: 2rem; margin: 0 auto 16px;"></div>
+        <h1 style="font-size: 2rem; margin-bottom: 8px;">Вход в DonTusa</h1>
+        <p style="color: var(--text-muted);">Добро пожаловать обратно! Войдите в свой аккаунт.</p>
+      </div>
+
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label for="login">Логин или Email</label>
+          <input type="text" id="login" name="login" class="form-control" placeholder="admin или hello@dontusa.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-floral w-full mb-4" id="loginBtn">Войти</button>
+        <p class="text-center" style="color: var(--text-muted); font-size: 0.9rem;">
+          Нет аккаунта? <a href="/auth/register.html" style="color: var(--color-accent); font-weight: 700;">Зарегистрироваться</a>
+        </p>
+      </form>
+
+      <div id="loginError" class="error-message hidden text-center mt-4"></div>
+
+      <div class="mt-8 pt-4 border-top" style="border-top-color: var(--border-light);">
+        <p style="color: var(--text-muted); margin-bottom: 16px;">Быстрый вход:</p>
+        <div class="flex gap-4 justify-center">
+          <button type="button" class="btn btn-ghost btn-sm" onclick="quickLogin('admin', 'admin123')">Администратор</button>
+          <button type="button" class="btn btn-ghost btn-sm" onclick="quickLogin('ivan@test.com', '123456')">Заказчик</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer style="margin-top: 40px;">
+    <div class="footer-content">
+      <div class="footer-brand">DonTusa</div>
+      <p style="font-size: 0.9rem; opacity: 0.8;">© 2026 DonTusa. Платформа для организации праздников.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Личный кабинет специалиста — DonTusa</title>
+  <link rel="stylesheet" href="/styles/variables.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/components.css">
+  <script defer src="/services/api.js"></script>
+  <script defer src="/main.js"></script>
+  <script defer src="/pages/specialist/dashboard-script.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo-icon">D</div>
+      <span>DonTusa</span>
+      <span class="sidebar-subtitle">Кабинет специалиста</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" data-section="dashboard"><span class="sidebar-icon">📊</span>Мои запросы</a>
+      <a href="#" class="sidebar-link" data-section="profile"><span class="sidebar-icon">👤</span>Профиль</a>
+      <a href="#" class="sidebar-link" data-section="portfolio"><span class="sidebar-icon">🖼</span>Портфолио</a>
+      <a href="#" class="sidebar-link" data-section="services"><span class="sidebar-icon">💼</span>Услуги</a>
+      <a href="#" class="sidebar-link" data-section="calendar"><span class="sidebar-icon">📅</span>Календарь занятости</a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="/auth/login.html" class="sidebar-link btn-lavender btn-sm w-full" style="margin-top:auto;">Выйти</a>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <header class="main-header">
+      <div class="main-header-left">
+        <h1 id="pageTitle">Мои запросы</h1>
+        <p id="pageSubtitle">Персональные запросы от менеджеров и мероприятия</p>
+      </div>
+      <div class="main-header-right">
+        <div class="user-profile">
+          <span id="currentUserName">Специалист</span>
+          <span id="currentUserRole">specialist</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card card-lavender fade-in-up"><div class="stat-icon">📨</div><div class="stat-value" id="statRequests">—</div><div class="stat-label">Всего запросов</div></div>
+        <div class="stat-card card-lavender fade-in-up" style="animation-delay:0.1s;"><div class="stat-icon">⏳</div><div class="stat-value" id="statPending">—</div><div class="stat-label">Ожидают ответа</div></div>
+        <div class="stat-card card-lavender fade-in-up" style="animation-delay:0.2s;"><div class="stat-icon">✅</div><div class="stat-value" id="statAccepted">—</div><div class="stat-label">Принято</div></div>
+        <div class="stat-card card-lavender fade-in-up" style="animation-delay:0.3s;"><div class="stat-icon">📅</div><div class="stat-value" id="statBooked">—</div><div class="stat-label">Занятых дат</div></div>
+      </div>
+    </section>
+
+    <div id="sectionsContainer">
+      <section class="content-section active" id="section-dashboard">
+        <div class="section-header">
+          <h2>Персональные запросы</h2>
+        </div>
+        <div id="requestsList" class="table-list">
+          <!-- Заполняется JS -->
+        </div>
+      </section>
+
+      <section class="content-section hidden" id="section-profile">
+        <div class="section-header">
+          <h2>Мой профиль</h2>
+        </div>
+        <div class="card max-w-lg">
+          <form id="profileForm">
+            <div class="form-group">
+              <label for="profileFullName">Имя / название профиля</label>
+              <input type="text" id="profileFullName" name="full_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="profileCity">Город работы</label>
+              <input type="text" id="profileCity" name="city" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="profileDescription">Описание</label>
+              <textarea id="profileDescription" name="description" class="form-control" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="profilePriceFrom">Цена от</label>
+              <input type="number" id="profilePriceFrom" name="price_from" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="profileExperience">Опыт (лет)</label>
+              <input type="number" id="profileExperience" name="experience" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-floral w-full">Сохранить профиль</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="content-section hidden" id="section-portfolio">
+        <div class="section-header">
+          <h2>Портфолио</h2>
+        </div>
+        <div id="portfolioList" class="table-list">
+          <!-- Заполняется JS -->
+        </div>
+      </section>
+
+      <section class="content-section hidden" id="section-services">
+        <div class="section-header">
+          <h2>Мои услуги</h2>
+        </div>
+        <div id="servicesList" class="table-list">
+          <!-- Заполняется JS -->
+        </div>
+      </section>
+
+      <section class="content-section hidden" id="section-calendar">
+        <div class="section-header">
+          <h2>Календарь занятости</h2>
+        </div>
+        <div id="calendarList" class="table-list">
+          <!-- Заполняется JS -->
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>

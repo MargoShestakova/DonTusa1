@@ -1,0 +1,14 @@
+{
+  "name": "dontusa",
+  "version": "1.0.0",
+  "description": "Веб-платформа для организации и сопровождения праздничных мероприятий",
+  "main": "backend/server.js",
+  "scripts": {
+    "dev": "cd backend && npm run dev",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npx serve src -p 5000",
+    "init-db": "cd backend && node src/config/init-db.js"
+  },
+  "keywords": ["dontusa", "events", "nodejs", "express", "postgresql"],
+  "license": "MIT"
+}
