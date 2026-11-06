@@ -1,102 +1,89 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Админ-панель — DonTusa</title>
-  <link rel="stylesheet" href="/styles/variables.css">
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/components.css">
-  <script defer src="/services/api.js"></script>
-  <script defer src="/main.js"></script>
-  <script defer src="/pages/admin/admin-dashboard.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кабинет администратора — DonTusa</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/main.css">
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="logo-icon">D</div>
-      <span>DonTusa</span>
-      <span class="sidebar-subtitle">Админ-панель</span>
-    </div>
-    <nav class="sidebar-nav">
-      <a href="#" class="sidebar-link active" data-section="dashboard"><span class="sidebar-icon">1</span>Статистика</a>
-      <a href="#" class="sidebar-link" data-section="users"><span class="sidebar-icon">2</span>Пользователи</a>
-      <a href="#" class="sidebar-link" data-section="events"><span class="sidebar-icon">3</span>Мероприятия</a>
-      <a href="#" class="sidebar-link" data-section="venues"><span class="sidebar-icon">4</span>Площадки</a>
-      <a href="#" class="sidebar-link" data-section="specialists"><span class="sidebar-icon">5</span>Специалисты</a>
-      <a href="#" class="sidebar-link" data-section="requests"><span class="sidebar-icon">6</span>Запросы специалистов</a>
-      <a href="#" class="sidebar-link" data-section="messages"><span class="sidebar-icon">7</span>Сообщения</a>
-      <a href="#" class="sidebar-link" data-section="activity"><span class="sidebar-icon">8</span>Журнал действий</a>
-    </nav>
-    <div class="sidebar-footer">
-      <a href="/auth/login.html" class="sidebar-link btn-lavender btn-sm w-full" style="margin-top:auto;">Выйти</a>
-    </div>
-  </aside>
 
-  <div class="main-content">
-    <header class="main-header">
-      <div class="main-header-left">
-        <h1 id="pageTitle">Дашборд</h1>
-        <p id="pageSubtitle">Обзор системы и ключевые показатели</p>
-      </div>
-      <div class="main-header-right">
-        <div class="user-profile">
-          <span id="currentUserName">Администратор</span>
-          <span id="currentUserRole">admin</span>
+    <!-- Шапка сайта -->
+    <header class="navbar">
+        <div class="navbar-inner">
+            <a href="../../pages/public/index.html" class="navbar-logo">Don<span>Tusa</span></a>
+            <nav class="navbar-links">
+                <button class="btn btn-outline" id="logout-btn">Выйти</button>
+            </nav>
         </div>
-      </div>
     </header>
 
-    <section class="stats-section">
-      <div class="stats-grid">
-        <div class="stat-card card-lavender fade-in-up"><div class="stat-icon">1</div><div class="stat-value" id="statUsers">—</div><div class="stat-label">Пользователи</div></div>
-        <div class="stat-card card-lavender fade-in-up" style="animation-delay:0.1s;"><div class="stat-icon">2</div><div class="stat-value" id="statEvents">—</div><div class="stat-label">Мероприятия</div></div>
-        <div class="stat-card card-lavender fade-in-up" style="animation-delay:0.2s;"><div class="stat-icon">3</div><div class="stat-value" id="statVenues">—</div><div class="stat-label">Площадки</div></div>
-        <div class="stat-card card-lavender fade-in-up" style="animation-delay:0.3s;"><div class="stat-icon">4</div><div class="stat-value" id="statSpecialists">—</div><div class="stat-label">Специалисты</div></div>
-      </div>
-    </section>
+    <!-- Кабинет -->
+    <div class="dashboard">
 
-    <div id="sectionsContainer">
-      <section class="content-section active" id="section-dashboard">
-        <div class="section-header"><h2>Обзор системы</h2><a href="#" class="btn btn-primary btn-sm">Обновить данные</a></div>
-        <div class="flex gap-8 justify-between"><div class="card flex-1"><h3>Последние мероприятия</h3><div id="recentEventsList" class="table-list"></div></div><div class="card flex-1"><h3>Новые пользователи</h3><div id="recentUsersList" class="table-list"></div></div></div>
-      </section>
+        <!-- Боковое меню -->
+        <aside class="sidebar">
+            <div class="sidebar-title">Администратор</div>
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-link active" data-tab="statistics">Статистика</a>
+                <a href="#" class="sidebar-link" data-tab="users">Пользователи</a>
+                <a href="#" class="sidebar-link" data-tab="events">Мероприятия</a>
+                <a href="#" class="sidebar-link" data-tab="venues">Площадки</a>
+            </nav>
+        </aside>
 
-      <section class="content-section hidden" id="section-users">
-        <div class="section-header"><h2>Пользователи системы</h2><a href="#" class="btn btn-primary btn-sm">Добавить пользователя</a></div>
-        <div class="card"><div class="table-responsive"><table class="data-table"><thead><tr><th>ФИО</th><th>Email</th><th>Роль</th><th>Телефон</th><th>Статус</th><th>Действия</th></tr></thead><tbody id="usersTableBody"></tbody></table></div></div>
-      </section>
+        <!-- Контент -->
+        <main class="dashboard-content">
 
-      <section class="content-section hidden" id="section-events">
-        <div class="section-header"><h2>Все мероприятия</h2><a href="#" class="btn btn-primary btn-sm">Экспорт в CSV</a></div>
-        <div class="card"><div class="table-responsive"><table class="data-table"><thead><tr><th>Название</th><th>Тип</th><th>Дата</th><th>Заказчик</th><th>Менеджер</th><th>Статус</th><th>Бюджет</th><th>Действия</th></tr></thead><tbody id="eventsTableBody"></tbody></table></div></div>
-      </section>
+            <!-- Вкладка: Статистика -->
+            <section id="tab-statistics" class="tab-panel">
+                <h2 class="page-title">Статистика</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-users">—</div>
+                        <div class="stat-label">Всего пользователей</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-customers">—</div>
+                        <div class="stat-label">Заказчиков</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="stat-specialists">—</div>
+                        <div class="stat-label">Специалистов</div>
+                    </div>
+                </div>
+            </section>
 
-      <section class="content-section hidden" id="section-venues">
-        <div class="section-header"><h2>Площадки для мероприятий</h2><a href="#" class="btn btn-primary btn-sm">Добавить площадку</a></div>
-        <div class="card"><div class="table-responsive"><table class="data-table"><thead><tr><th>Название</th><th>Адрес</th><th>Тип</th><th>Вместимость</th><th>Опубликовано</th><th>Автор</th><th>Действия</th></tr></thead><tbody id="venuesTableBody"></tbody></table></div></div>
-      </section>
+            <!-- Вкладка: Пользователи -->
+            <section id="tab-users" class="tab-panel" style="display: none;">
+                <h2 class="page-title">Пользователи</h2>
+                <div id="users-container">
+                    <p class="text-muted">Загрузка данных...</p>
+                </div>
+            </section>
 
-      <section class="content-section hidden" id="section-specialists">
-        <div class="section-header"><h2>Специалисты</h2><a href="#" class="btn btn-primary btn-sm">Верифицировать всех</a></div>
-        <div class="card"><div class="table-responsive"><table class="data-table"><thead><tr><th>Имя</th><th>Специализация</th><th>Город</th><th>Цена от</th><th>Опыт</th><th>Статус</th><th>Действия</th></tr></thead><tbody id="specialistsTableBody"></tbody></table></div></div>
-      </section>
+            <!-- Вкладка: Мероприятия -->
+            <section id="tab-events" class="tab-panel" style="display: none;">
+                <h2 class="page-title">Мероприятия</h2>
+                <div class="card">
+                    <p class="card-text">Раздел в разработке. Здесь будет список всех мероприятий платформы.</p>
+                </div>
+            </section>
 
-      <section class="content-section hidden" id="section-requests">
-        <div class="section-header"><h2>Персональные запросы специалистам</h2></div>
-        <div class="card"><div class="table-responsive"><table class="data-table"><thead><tr><th>Мероприятие</th><th>Специалист</th><th>Менеджер</th><th>Статус</th><th>Дата отправки</th><th>Действия</th></tr></thead><tbody id="requestsTableBody"></tbody></table></div></div>
-      </section>
+            <!-- Вкладка: Площадки -->
+            <section id="tab-venues" class="tab-panel" style="display: none;">
+                <h2 class="page-title">Площадки</h2>
+                <div class="card">
+                    <p class="card-text">Раздел в разработке. Здесь будет список всех площадок платформы.</p>
+                </div>
+            </section>
 
-      <section class="content-section hidden" id="section-messages">
-        <div class="section-header"><h2>Переписка пользователей</h2></div>
-        <div class="card"><div class="table-responsive"><table class="data-table"><thead><tr><th>Отправитель</th><th>Получатель</th><th>Мероприятие</th><th>Текст</th><th>Дата</th><th>Прочитано</th></tr></thead><tbody id="messagesTableBody"></tbody></table></div></div>
-      </section>
-
-      <section class="content-section hidden" id="section-activity">
-        <div class="section-header"><h2>Журнал действий администраторов</h2></div>
-        <div class="card"><div class="table-responsive"><table class="data-table"><thead><tr><th>Пользователь</th><th>Действие</th><th>Сущность</th><th>ID сущности</th><th>Дата</th></tr></thead><tbody id="activityTableBody"></tbody></table></div></div>
-      </section>
+        </main>
     </div>
-  </div>
+
+    <script src="admin-dashboard.js"></script>
 </body>
 </html>
